@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Photo Placeholder Example</title>
+</head>
 <body>
+  <div id="photo-container"></div>
 
-<p>This is a paragraph.</p>
-<p>This is another paragraph.</p>
+  <script>
+    // Select the HTML element where the photo placeholder will be rendered
+    const photoContainer = document.getElementById('photo-container');
 
+    // Fetch a random photo placeholder from the Unsplash API
+    fetch('https://source.unsplash.com/random')
+      .then(response => {
+        // Create an HTML <img> element with the photo as the source
+        const photo = document.createElement('img');
+        photo.src = response.url;
+
+        // Add the photo to the HTML container element
+        photoContainer.appendChild(photo);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
 </body>
 </html>
